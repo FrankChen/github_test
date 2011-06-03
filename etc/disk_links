@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if [ "$ACTION" = "add" ]; then
+if echo $DEVPATH | grep "usb"; then
+install -d storage
+ln -s ../$MDEV storage/usb_${DEVTYPE}_$MDEV
+fi
+
+if echo $DEVPATH | grep "sata"; then
+install -d storage
+ln -s ../$MDEV storage/sata_${DEVTYPE}_$MDEV
+fi
+
+else
+
+if [ "$ACTION" = "remove" ]; then
+
+if echo $DEVPATH | grep "usb"; then
+rm storage/usb_${DEVTYPE}_$MDEV
+fi
+
+if echo $DEVPATH | grep "sata"; then
+rm storage/sata_${DEVTYPE}_$MDEV
+fi
+
+fi
+
+fi
+

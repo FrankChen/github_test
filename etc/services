@@ -1,0 +1,20 @@
+# <servicename> <portnumber>/<protocol> [aliases...] [#<comment>]
+echo	7/tcp
+echo	7/udp
+discard	9/tcp	sink null
+discard 9/udp	sink null
+daytime	13/tcp
+daytime	13/udp
+time	37/tcp	timeserver
+time	37/udp	timeserver
+ftp	21/tcp
+telnet	23/tcp
+ssh	22/tcp
+tftp	69/udp
+bootps	67/udp	dhcps
+bootpc	68/udp	dhcpc
+http	80/tcp	www www-http
+sunrpc	111/tcp	rpcbind portmap
+sunrpc	111/udp	rpcbind portmap
+syslog	514/udp
+timed	525/udp	timeserver

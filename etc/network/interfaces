@@ -1,0 +1,36 @@
+# cat interfaces
+#
+# /etc/network/interfaces
+#
+#   configuration file for ifup and ifdown
+#
+
+#
+# Interfaces to start with ifup -a
+#
+auto lo
+
+#
+# Loopback interface
+#
+iface lo inet loopback
+
+#
+# Ethernet interface (dhcp)
+#
+auto eth0
+iface eth0 inet dhcp
+	pre-up [ "`cat /proc/cmdline | sed -ne '/nfsroot/p'`" = "" ] 
+	down [ "`cat /proc/cmdline | sed -ne '/nfsroot/p'`" = "" ] 
+
+
+#
+# Ethernet interface (static)
+#
+#iface eth0 inet static
+#	address 192.168.1.2
+#	netmask 255.255.255.0
+#	gateway 192.168.1.1
+
+
+# last line
